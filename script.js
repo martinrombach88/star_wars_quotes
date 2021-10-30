@@ -35,7 +35,7 @@ console.log(currentQuote.faction);
 //id: The quote number. (Can you choose?)
 //content: The quote, and character.
 //faction: The side of the character. (0 light side, 1 dark side, 2 ??)
-//Console logs can't be made outside the fetch request.
+//Console logs can't be made outside the fetch request. (Is that true?)
 //Quote takes a while to load and should be considered in programming.
 //Update to quote container should be made within the fetch request function.
 
