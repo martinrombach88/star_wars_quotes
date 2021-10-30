@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    padding:0;
+}
+
+.lightSideBackground {
+    background-image: url("../star_wars_quote_generator/images/light_side.jpg");
+    
+}
+
+.darkSideBackground{
+    background-image: url("../star_wars_quote_generator/images/dark_side.jpg");
+}
+
+#mainContainer {
+    margin:auto;
+    display:flex;
+    background-size: 100%;
+    height:41.2em;
+    justify-content: center;
+
+} 
+
+#quoteDiv {
+    color:white;
+    background-color:black;
+    align-self:center;
+
+}
+
+#darkSide:hover {   
+    color:red;
+    background-color:black;
+}
+
