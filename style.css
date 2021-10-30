@@ -4,12 +4,12 @@ body {
 }
 
 .lightSideBackground {
-    background-image: url("../star_wars_quote_generator/images/light_side.jpg");
+    background-image: url("../star_wars_quotes/images/dark_side.jpg");
     
 }
 
 .darkSideBackground{
-    background-image: url("../star_wars_quote_generator/images/dark_side.jpg");
+    background-image: url("../star_wars_quotes/images/dark_side.jpg");
 }
 
 #mainContainer {
