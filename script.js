@@ -9,38 +9,93 @@
 //light side and dark side styling, based on the faction set by the API.
 //Personalise HTML/CSS from scratch, keep to basic structure
 
-// const apiURL = ("http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote")
-// let apiQuote = [];
-
 
 //https://reqbin.com/req/nfilsyk5/get-request-example 
 
+let getQuote = async function() {
 
-let currentQuote;
-var url = "http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote";
+    fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
+    .then(data => {
+    return data.json();
+    })
+    .then(content => {
+    // return content;
+    //If you call your function here, using content as a parameter, it should work.
+    console.log(content);
+    displayQuote(content);
+    })
+}
 
-fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
-.then(data => {
-return data.json();
-})
-.then(content => {
-console.log(content);
-currentQuote = content;
-let quotePost = document.createTextNode(currentQuote.content);
-document.getElementById('lightQuoteText').appendChild(quotePost);
-console.log(currentQuote.content);
-console.log(currentQuote.id);
-console.log(currentQuote.faction);
-});
+const displayQuote = function(quoteContent) {
+    let quoteInit = quoteContent['content'];
+    console.log(quoteInit);
+    let quotePost = document.createTextNode(quoteInit);
+    // if (quoteContent.faction = 0) {
+        let lightDiv = document.createElement('div');
+        let lightP = document.createElement('p');
+        document.getElementById('mainContainer').classList.add('lightSideBackground');
+        document.getElementById('mainContainer').appendChild(lightDiv);
+        lightDiv.setAttribute('id', 'lightQuoteContainer');
+        lightDiv.appendChild(lightP);
+        document.getElementById('lightP').appendChild(quotePost);
+
+    // } else if (quoteContent.faction = 1) {
+    //     let lightDiv = document.createElement('div');
+    //     let lightP = document.createElement('p');
+    //     document.getElementById('mainContainer').classList.add('lightSideBackground');
+    //     document.getElementById('mainContainer').appendChild(lightDiv);
+    //     lightDiv.setAttribute('id', 'lightQuoteContainer');
+    //     lightDiv.appendChild(lightP);
+    //     document.getElementById('lightP').appendChild(quotePost);
+    // }
+
+    // else {
+    //     let lightDiv = document.createElement('div');
+    //     let lightP = document.createElement('p');
+    //     document.getElementById('mainContainer').classList.add('lightSideBackground');
+    //     document.getElementById('mainContainer').appendChild(lightDiv);
+    //     lightDiv.setAttribute('id', 'lightQuoteContainer');
+    //     lightDiv.appendChild(lightP);
+    //     document.getElementById('lightP').appendChild(quotePost);
+    // }
+}
+
+getQuote();
+
+
+
+// document.getElementById('mainContainer').addClassList('lightSideBackground');
+// // 
+
+// 
+// console.log(currentQuote.content);
+// console.log(currentQuote.id);
+// console.log(currentQuote.faction);
+
+// //<div id="lightQuoteContainer">
+// <p id="lightQuoteText"></p>
+// </div>
+
 
 //Properties: 
 //id: The quote number. (Can you choose?)
 //content: The quote, and character.
-//faction: The side of the character. (0 light side, 1 dark side, 2 ??)
+//faction: The side of the character. 
 //Console logs can't be made outside the fetch request. (Is that true?)
 //Quote takes a while to load and should be considered in programming.
 //Update to quote container should be made within the fetch request function.
 
+//(0 light side, 1 dark side, 2 ?? - up to 4)
+//2 civilians?
+//2 characters: Schmi (anakin's mum)
+//4 Ryo Chuchi (some clone wars politician)
+//2, 3, 4
+
+//LOGIC
+//get quote
+
+// Main container gets a class of the background
+//
 
 
 
