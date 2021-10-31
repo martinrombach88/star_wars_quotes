@@ -1,104 +1,100 @@
-// const apiURL = 
-// Calling this site gives a random quote. You don't have
-// a list or control of the quotes. 'http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote'
-// faction:0 = light side. faction:1 = dark side.
 
-//Website found: https://wolfgang-ziegler.com/blog/starwars-quotes-web-api
-
-//Changes to make in DOM
-//light side and dark side styling, based on the faction set by the API.
-//Personalise HTML/CSS from scratch, keep to basic structure
-
-
-//https://reqbin.com/req/nfilsyk5/get-request-example 
-
-let lightQuote = document.getElementById('lightQuoteText')
 let getQuote = function() {
 
     fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
     .then(data => {
-    return data.json();
-    })
+        return data.json();
+        })
     .then(content => {
-    // return content;
-    //If you call your function here, using content as a parameter, it should work.
-    console.log(content);
-    let quote = document.createTextNode(content.content)
-    lightQuote.appendChild(quote);
-    // displayQuote(content);
+        console.log(content);
+        createQuoteContainer(content);
+        setContainerColor(content.faction)
     })
 }
 
-const displayQuote = function(quoteContent) {
+const createQuoteContainer = function(quoteContent) {
     let quoteInit = quoteContent['content'];
-    console.log(quoteInit);
     let quotePost = document.createTextNode(quoteInit);
-    // if (quoteContent.faction = 0) {
-        let lightDiv = document.createElement('div');
-        let lightP = document.createElement('p');
-        document.getElementById('mainContainer').classList.add('lightSideBackground');
-        document.getElementById('mainContainer').appendChild(lightDiv);
-        lightDiv.setAttribute('id', 'lightQuoteContainer');
-        lightDiv.appendChild(lightP);
-        document.getElementById('lightP').appendChild(quotePost);
+    let div = document.createElement('div');
+    let p = document.createElement('p');
+    let btnDiv = document.createElement('div');
+    let btn = document.createElement('button');
+    let btnText = document.createTextNode("New Quote");
+    let twitterText = document.createTextNode("Post to Twitter");
+    let twitterBtn = document.createElement('button');
 
-    // } else if (quoteContent.faction = 1) {
-    //     let lightDiv = document.createElement('div');
-    //     let lightP = document.createElement('p');
-    //     document.getElementById('mainContainer').classList.add('lightSideBackground');
-    //     document.getElementById('mainContainer').appendChild(lightDiv);
-    //     lightDiv.setAttribute('id', 'lightQuoteContainer');
-    //     lightDiv.appendChild(lightP);
-    //     document.getElementById('lightP').appendChild(quotePost);
-    // }
+    document.getElementById('mainContainer').appendChild(div);
+    div.classList.add('quoteContainer');
+    btn.classList.add('button');
+    twitterBtn.classList.add('button');
+    btnDiv.classList.add('btnDiv');
 
-    // else {
-    //     let lightDiv = document.createElement('div');
-    //     let lightP = document.createElement('p');
-    //     document.getElementById('mainContainer').classList.add('lightSideBackground');
-    //     document.getElementById('mainContainer').appendChild(lightDiv);
-    //     lightDiv.setAttribute('id', 'lightQuoteContainer');
-    //     lightDiv.appendChild(lightP);
-    //     document.getElementById('lightP').appendChild(quotePost);
-    // }
+    //Here we need to set quoteContainer as both a class and an id.
+    div.setAttribute('id', 'quoteContainer');
+    btnDiv.setAttribute('id', 'btnDiv');
+    div.appendChild(p);
+    div.appendChild(btnDiv);
+    btnDiv.appendChild(btn);
+    btnDiv.appendChild(twitterBtn);
+    btn.appendChild(btnText);
+    twitterBtn.appendChild(twitterText);
+    p.appendChild(quotePost);
+    
 }
+
+const setContainerColor = function(faction) {
+    console.log(faction);
+    let div = document.getElementById('quoteContainer');
+    let btnDiv = document.getElementById('btnDiv');
+        if (faction == 0) {
+            document.getElementById('mainContainer').classList.add('lightSideBackground');
+            document.getElementById('mainContainer').classList.remove('neutralBackground');
+            document.getElementById('mainContainer').classList.remove('darkSideBackground');    
+            div.classList.add('lightQuoteContainer');   
+            btnDiv.classList.add('lightBtn');
+
+        } else if (faction == 1) {
+            document.getElementById('mainContainer').classList.add('darkSideBackground');
+            document.getElementById('mainContainer').classList.remove('lightSideBackground');
+            document.getElementById('mainContainer').classList.remove('neutralBackground');         
+            div.classList.add('darkQuoteContainer');
+            btnDiv.classList.add('darkBtn');
+        }
+        else {
+            document.getElementById('mainContainer').classList.add('neutralBackground');
+            document.getElementById('mainContainer').classList.remove('lightSideBackground');
+            document.getElementById('mainContainer').classList.remove('darkSideBackground'); 
+            div.classList.add('neutralQuoteContainer');
+            btnDiv.classList.add('neutralBtn');
+        }
+}
+
 
 getQuote();
 
 
+//Notes from Mentor:
+// Mistake! - Don't use single = for comparison.
 
-// document.getElementById('mainContainer').addClassList('lightSideBackground');
-// // 
+//Don't set styles by id. Use classes instead. Only use ids in rare occasions.
 
-// 
-// console.log(currentQuote.content);
-// console.log(currentQuote.id);
-// console.log(currentQuote.faction);
+//Make your code more DRY, think more top down and functionally.
+//Each function has to do one thing, and should do it generically.
+//Don't embed ids in code.
 
-// //<div id="lightQuoteContainer">
-// <p id="lightQuoteText"></p>
-// </div>
+//Completely separate the styles from HTML structure. 
+//Use classes for CSS only. Make sure functions serve a single purpose.
+//Order:
+//Build the structure of the HTML/Javascript functions.
+//Set the CSS through classes.
 
+//Key Note: Structure into lots of small functions that serve single purposes.
 
-//Properties: 
-//id: The quote number. (Can you choose?)
-//content: The quote, and character.
-//faction: The side of the character. 
-//Console logs can't be made outside the fetch request. (Is that true?)
-//Quote takes a while to load and should be considered in programming.
-//Update to quote container should be made within the fetch request function.
-
-//(0 light side, 1 dark side, 2 ?? - up to 4)
-//2 civilians?
-//2 characters: Schmi (anakin's mum)
-//4 Ryo Chuchi (some clone wars politician)
-//2, 3, 4
-
-//LOGIC
-//get quote
-
-// Main container gets a class of the background
-//
-
-
-
+//When adding buttons + loading
+//1. Build the HTML/DOM structure first. DO NOT USE CSS!
+//2. Add the on click event in a separate function.
+//3. Loading - one from an onclick event. 
+// One from the page load event. - This is more complicated. 
+// You would need to build extra code to add an animation while this is loading.
+// This is a complicated process and should be avoided. (Maybe just style the body instead.)
+//4. 

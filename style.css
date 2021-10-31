@@ -1,10 +1,12 @@
 body {
     margin: 0;
     padding:0;
-    
+    /* background:black; */
 }
 
 #mainContainer {
+    background-image: url("../star_wars_quotes/images/loading_quote.jpg");
+    background-position: bottom;
     display:flex;
     text-align:center;
     align-items: center;
@@ -14,77 +16,77 @@ body {
 }
 
 .lightSideBackground {
+    
     background-image: url("../star_wars_quotes/images/light_side.jpg"); 
     
 }
 
-
 .darkSideBackground{
+    
     background-image: url("../star_wars_quotes/images/dark_side.jpg");
 }
 
 .neutralBackground{
+    
     background-image: url("../star_wars_quotes/images/neutral.jpg");
+    background-position:bottom;
 }
 
-
-#lightQuoteContainer {
+.quoteContainer {
     width:auto;
-    max-width:1000px;
-    background-color:black;
+    max-width:1000px;   
     border-radius: 10px;
-    border:cornflowerblue;
     padding:20px;
+    font-size: 2.7em;
+    background-color:black;
+    display:flex;
+    flex-direction:column;
+}
+
+.btnDiv {
+    display:flex;
+    align-items:center;
+    justify-content: center;
+}
+
+.button {
+    font-size:20px;
+    padding:15px;
+    margin-left:20px;
+    background-color:black;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.lightQuoteContainer {
+    color:cornflowerblue;
+    border:cornflowerblue;
     box-shadow: 4px 0px 8px 0px rgba(167, 224, 220, 0.4), 6px 0px 20px 0px rgba(167, 224, 220, 0.4);
 }
 
-#lightQuoteText {
+.lightBtn button{
     color:cornflowerblue;
-    font-size: 2.7em;
 }
 
-
-#darkQuoteContainer {
-    width:auto;
-    max-width:900px;
-    background-color:black;
-    border-radius: 10px;
+.darkQuoteContainer {
     border:darkred;
-    padding:20px;
+    color:rgb(212, 0, 0);
     box-shadow: 4px 0px 8px 0px rgba(199, 63, 63, 0.377), 6px 0px 20px 0px rgba(199, 63, 63, 0.377);
 }
 
-#darkQuoteContainer {
+.darkBtn button{
     color:rgb(212, 0, 0);
-    font-size: 2.7em;
 }
 
-#neutralQuoteContainer {
-    width:auto;
-    max-width:900px;
-    background-color:black;
-    border-radius: 10px;
+
+.neutralQuoteContainer {
     border:rgb(243, 243, 242);
-    padding:20px;
+    color:rgb(212, 191, 0);
     box-shadow: 4px 0px 8px 0px rgba(202, 202, 202, 0.377), 6px 0px 20px 0px rgba(199, 199, 199, 0.377);
 }
 
-#neutralQuoteContainer {
+.neutralBtn button{
     color:rgb(212, 191, 0);
-    font-size: 2.7em;
 }
-
-
-
-#mainContainer {
-    margin:auto;
-    display:flex;
-    background-size: 100%;
-    height:41.2em;
-    justify-content: center;
-    align-items: center;
-
-} 
 
 
 
