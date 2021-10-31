@@ -9,4 +9,4 @@ Current plan:
 2. Test and integrate the Star Wars quotes API functionality into one of the pages. (Complete)
 3. Implement a button for requesting new quotes from the API on user click.
 4. Implement a button for sending Star Wars quotes to Twitter.
-4. Build one of the template pages into the DOM, triggering the HTML when a dark side quote is present. Contain all content in 1 page.
+4. Build the template pages into the DOM, triggering the HTML when a dark side quote is present. Contain all content in 1 page.
