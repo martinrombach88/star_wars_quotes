@@ -12,7 +12,8 @@
 
 //https://reqbin.com/req/nfilsyk5/get-request-example 
 
-let getQuote = async function() {
+let lightQuote = document.getElementById('lightQuoteText')
+let getQuote = function() {
 
     fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
     .then(data => {
@@ -22,7 +23,9 @@ let getQuote = async function() {
     // return content;
     //If you call your function here, using content as a parameter, it should work.
     console.log(content);
-    displayQuote(content);
+    let quote = document.createTextNode(content.content)
+    lightQuote.appendChild(quote);
+    // displayQuote(content);
     })
 }
 
