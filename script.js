@@ -26,6 +26,8 @@ return data.json();
 .then(content => {
 console.log(content);
 currentQuote = content;
+let quotePost = document.createTextNode(currentQuote.content);
+document.getElementById('lightQuoteText').appendChild(quotePost);
 console.log(currentQuote.content);
 console.log(currentQuote.id);
 console.log(currentQuote.faction);
