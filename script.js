@@ -1,6 +1,8 @@
+document.getElementById('mainContainer').classList.add('loadingBackground');
+document.getElementById('mainContainer').classList.remove('lightSideBackground');
 
-let getQuote = function() {
 
+let getQuote = function() { 
     fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
     .then(data => {
         return data.json();
@@ -8,7 +10,7 @@ let getQuote = function() {
     .then(content => {
         console.log(content);
         createQuoteContainer(content);
-        setContainerColor(content.faction)
+        setContainerColor(content.faction);
     })
 }
 
@@ -24,6 +26,7 @@ const createQuoteContainer = function(quoteContent) {
     let twitterBtn = document.createElement('button');
 
     document.getElementById('mainContainer').appendChild(div);
+    document.getElementById('mainContainer')
     div.classList.add('quoteContainer');
     btn.classList.add('button');
     twitterBtn.classList.add('button');
@@ -43,27 +46,28 @@ const createQuoteContainer = function(quoteContent) {
 }
 
 const setContainerColor = function(faction) {
+    document.getElementById('mainContainer').classList.add('loadingBackground');
     console.log(faction);
     let div = document.getElementById('quoteContainer');
     let btnDiv = document.getElementById('btnDiv');
         if (faction == 0) {
             document.getElementById('mainContainer').classList.add('lightSideBackground');
-            document.getElementById('mainContainer').classList.remove('neutralBackground');
-            document.getElementById('mainContainer').classList.remove('darkSideBackground');    
+            // document.getElementById('mainContainer').classList.remove('neutralBackground');
+            // document.getElementById('mainContainer').classList.remove('darkSideBackground');    
             div.classList.add('lightQuoteContainer');   
             btnDiv.classList.add('lightBtn');
 
         } else if (faction == 1) {
             document.getElementById('mainContainer').classList.add('darkSideBackground');
-            document.getElementById('mainContainer').classList.remove('lightSideBackground');
-            document.getElementById('mainContainer').classList.remove('neutralBackground');         
+            // document.getElementById('mainContainer').classList.remove('lightSideBackground');
+            // document.getElementById('mainContainer').classList.remove('neutralBackground');         
             div.classList.add('darkQuoteContainer');
             btnDiv.classList.add('darkBtn');
         }
         else {
             document.getElementById('mainContainer').classList.add('neutralBackground');
-            document.getElementById('mainContainer').classList.remove('lightSideBackground');
-            document.getElementById('mainContainer').classList.remove('darkSideBackground'); 
+            // document.getElementById('mainContainer').classList.remove('lightSideBackground');
+            // document.getElementById('mainContainer').classList.remove('darkSideBackground'); 
             div.classList.add('neutralQuoteContainer');
             btnDiv.classList.add('neutralBtn');
         }
