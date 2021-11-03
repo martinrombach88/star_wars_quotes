@@ -7,7 +7,8 @@ A website that generates a Star Wars quote, and changes automatically depending 
 Work Order:
 1. Create templates of both the light side and dark side pages. (Complete)
 2. Test and integrate the Star Wars quotes API functionality into one of the pages. (Complete)
-3. Implement a button for requesting new quotes from the API on user click.
-4. Implement a button for sending Star Wars quotes to Twitter.
+3. Implement a button for requesting new quotes from the API on user click. (Complete)
+4. Implement a button for sending Star Wars quotes to Twitter. (Complete)
 5. Build one of the template pages into the DOM, triggering the HTML when a dark side quote is present. Contain all content in 1 page. (Complete)
-6. Implement a smooth transition between quotes on reload.
+6. Implement a smooth transition between quotes on reload. (Complete)
+7. Give the page an introduction (Complete)

@@ -1,8 +1,10 @@
 document.getElementById('mainContainer').classList.add('loadingBackground');
-document.getElementById('mainContainer').classList.remove('lightSideBackground');
-let quoteContainer = false;
 
-let getQuote = function() { 
+
+let quoteContainer = false;
+let getQuote = function() {
+    let intro = document.getElementById('intro')
+    
     fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
     .then(data => {
         return data.json();
@@ -10,20 +12,16 @@ let getQuote = function() {
     .then(content => {
         console.log(content);
         if(!quoteContainer) {
+            document.getElementById('mainContainer').removeChild(intro);
             createQuoteContainer(content);
             setContainerColor(content.faction);
             quoteContainer = true;
         } else {
-            
-            replaceQuoteContainer(content)
-            setContainerColor(content.faction);
-            
+            replaceQuoteContainer(content);
         }
 
     })
 }
-
-
 
 const createQuoteContainer = function(quoteContent) {
     //Quote Init
@@ -55,68 +53,63 @@ const createQuoteContainer = function(quoteContent) {
     twitterBtn.classList.add('button');
     btnDiv.classList.add('btnDiv');
 
-    //Here we need to set quoteContainer as both a class and an id.
+    //Set attributes
     div.setAttribute('id', 'quoteContainer');
     btnDiv.setAttribute('id', 'btnDiv');
     p.setAttribute('id', 'quoteP')
-
     p.appendChild(quotePost);
+
 
     btn.addEventListener("click", function() {
         getQuote();
-        //Clear inner HTML first, then call getQuote
-        //div classlist needs to be empty
-        //btnDiv classList needs to be empty
-        //Is that enough?
-       
-    
         })
 
+    twitterBtn.addEventListener("click", function() {
+        console.log(quotePost);
+        tweetQuote(quotePost);
+        })
 }
 
-const replaceQuoteContainer = function (quoteContent){
+const replaceQuoteContainer = function(quoteContent){
     let quoteInit = quoteContent['content'];
     let quotePost = document.createTextNode(quoteInit);
     let p = document.getElementById('quoteP');
-    let btn = document.getElementById('button');
     p.textContent = quotePost.textContent;
-    btn.addEventListener("click", function() {
-        getQuote();
-    
-        })
+    setContainerColor(quoteContent.faction);
+
 
 }
 
 const setContainerColor = function(faction) {
     document.getElementById('mainContainer').classList.add('loadingBackground');
-    console.log(faction);
     let div = document.getElementById('quoteContainer');
     let btnDiv = document.getElementById('btnDiv');
+    document.getElementById('mainContainer').classList.remove('mainContainerInitial','lightSideBackground','darkSideBackground','neutralBackground');
+    div.classList.remove('lightQuoteContainer','darkQuoteContainer','neutralQuoteContainer');
+    btnDiv.classList.remove('lightBtn', 'darkBtn', 'neutralBtn');
         if (faction == 0) {
             document.getElementById('mainContainer').classList.add('lightSideBackground');
-            // document.getElementById('mainContainer').classList.remove('neutralBackground');
-            // document.getElementById('mainContainer').classList.remove('darkSideBackground');    
             div.classList.add('lightQuoteContainer');   
             btnDiv.classList.add('lightBtn');
 
         } else if (faction == 1) {
             document.getElementById('mainContainer').classList.add('darkSideBackground');
-            // document.getElementById('mainContainer').classList.remove('lightSideBackground');
-            // document.getElementById('mainContainer').classList.remove('neutralBackground');         
             div.classList.add('darkQuoteContainer');
             btnDiv.classList.add('darkBtn');
         }
         else {
             document.getElementById('mainContainer').classList.add('neutralBackground');
-            // document.getElementById('mainContainer').classList.remove('lightSideBackground');
-            // document.getElementById('mainContainer').classList.remove('darkSideBackground'); 
             div.classList.add('neutralQuoteContainer');
             btnDiv.classList.add('neutralBtn');
         }
 
 }
 
-
+const tweetQuote = function(quotePost) {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quotePost.textContent}`; 
+    //Using a template string allows turning a variable into a string for reference
+    window.open(twitterUrl, '_blank') //Opens a twitter window in a new tab
+}
 
 getQuote();
 
