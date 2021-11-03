@@ -1,6 +1,6 @@
 document.getElementById('mainContainer').classList.add('loadingBackground');
 document.getElementById('mainContainer').classList.remove('lightSideBackground');
-
+let quoteContainer = false;
 
 let getQuote = function() { 
     fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
@@ -9,24 +9,47 @@ let getQuote = function() {
         })
     .then(content => {
         console.log(content);
-        createQuoteContainer(content);
-        setContainerColor(content.faction);
+        if(!quoteContainer) {
+            createQuoteContainer(content);
+            setContainerColor(content.faction);
+            quoteContainer = true;
+        } else {
+            
+            replaceQuoteContainer(content)
+            setContainerColor(content.faction);
+            
+        }
+
     })
 }
 
+
+
 const createQuoteContainer = function(quoteContent) {
+    //Quote Init
     let quoteInit = quoteContent['content'];
     let quotePost = document.createTextNode(quoteInit);
+    //Create element
     let div = document.createElement('div');
     let p = document.createElement('p');
     let btnDiv = document.createElement('div');
     let btn = document.createElement('button');
+    let twitterBtn = document.createElement('button');
+    //Create Text Node
+    
     let btnText = document.createTextNode("New Quote");
     let twitterText = document.createTextNode("Post to Twitter");
-    let twitterBtn = document.createElement('button');
 
+    //Append Child
     document.getElementById('mainContainer').appendChild(div);
-    document.getElementById('mainContainer')
+    div.appendChild(p);
+    div.appendChild(btnDiv);
+    btnDiv.appendChild(btn);
+    btnDiv.appendChild(twitterBtn);
+    btn.appendChild(btnText);
+    twitterBtn.appendChild(twitterText);
+
+    //Classlist Add
     div.classList.add('quoteContainer');
     btn.classList.add('button');
     twitterBtn.classList.add('button');
@@ -35,14 +58,33 @@ const createQuoteContainer = function(quoteContent) {
     //Here we need to set quoteContainer as both a class and an id.
     div.setAttribute('id', 'quoteContainer');
     btnDiv.setAttribute('id', 'btnDiv');
-    div.appendChild(p);
-    div.appendChild(btnDiv);
-    btnDiv.appendChild(btn);
-    btnDiv.appendChild(twitterBtn);
-    btn.appendChild(btnText);
-    twitterBtn.appendChild(twitterText);
+    p.setAttribute('id', 'quoteP')
+
     p.appendChild(quotePost);
+
+    btn.addEventListener("click", function() {
+        getQuote();
+        //Clear inner HTML first, then call getQuote
+        //div classlist needs to be empty
+        //btnDiv classList needs to be empty
+        //Is that enough?
+       
     
+        })
+
+}
+
+const replaceQuoteContainer = function (quoteContent){
+    let quoteInit = quoteContent['content'];
+    let quotePost = document.createTextNode(quoteInit);
+    let p = document.getElementById('quoteP');
+    let btn = document.getElementById('button');
+    p.textContent = quotePost.textContent;
+    btn.addEventListener("click", function() {
+        getQuote();
+    
+        })
+
 }
 
 const setContainerColor = function(faction) {
@@ -71,10 +113,13 @@ const setContainerColor = function(faction) {
             div.classList.add('neutralQuoteContainer');
             btnDiv.classList.add('neutralBtn');
         }
+
 }
 
 
+
 getQuote();
+
 
 
 //Notes from Mentor:
@@ -101,4 +146,7 @@ getQuote();
 // One from the page load event. - This is more complicated. 
 // You would need to build extra code to add an animation while this is loading.
 // This is a complicated process and should be avoided. (Maybe just style the body instead.)
-//4. 
+//4
+
+//Marie Tip 
+//When making a transition, deal with the opacity.
