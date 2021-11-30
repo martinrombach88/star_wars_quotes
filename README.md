@@ -12,3 +12,7 @@ Work Order:
 5. Build one of the template pages into the DOM, triggering the HTML when a dark side quote is present. Contain all content in 1 page. (Complete)
 6. Implement a smooth transition between quotes on reload. (Complete)
 7. Give the page an introduction (Complete)
+
+Further Updates:
+1. Refactoring the code to follow MVC conventions and be more DRY.
+2. Changing the UTF to suit the quotes for better compatibility.
