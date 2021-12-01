@@ -15,29 +15,29 @@ body {
 }
 
 .mainContainerInitial {
-    background-image: url("../star_wars_quotes/images/loading_quote.jpg");  
+    background-image: url("./images/loading_quote.jpg");  
 }
 
 
 .loadingBackground {
     transition: background-image 1.0s ease-in;
-    background-image: url("../star_wars_quotes/images/loading_quote.jpg");
+    background-image: url("./images/loading_quote.jpg");
 }
 
 .lightSideBackground {
     transition: background-image 0.8s ease-in-out;
-    background-image: url("../star_wars_quotes/images/light_side.jpg"); 
+    background-image: url("./images/light_side.jpg"); 
     
 }
 
 .darkSideBackground{ 
     transition: background-image 0.8s ease-in-out;
-    background-image: url("../star_wars_quotes/images/dark_side.jpg");
+    background-image: url("./images/dark_side.jpg");
 }
 
 .neutralBackground{
     transition: background-image 0.8s ease-in-out;
-    background-image: url("../star_wars_quotes/images/neutral.jpg");
+    background-image: url("./images/neutral.jpg");
     background-position:bottom;
 }
 

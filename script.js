@@ -4,23 +4,29 @@ document.getElementById('mainContainer').classList.add('loadingBackground');
 let quoteContainer = false;
 let getQuote = function() {
     let intro = document.getElementById('intro')
-    
-    fetch('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
-    .then(data => {
-        return data.json();
-        })
-    .then(content => {
-        console.log(content);
+    let num = randomNumber(0, 2);
+    fetch('api/starwars.json')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        console.log(data.starwars[num]);
+        console.log(data.starwars[num].content);
         if(!quoteContainer) {
             document.getElementById('mainContainer').removeChild(intro);
-            createQuoteContainer(content);
-            setContainerColor(content.faction);
+            createQuoteContainer(data.starwars[num]);
+            setContainerColor(data.starwars[num].faction);
             quoteContainer = true;
         } else {
-            replaceQuoteContainer(content);
+            replaceQuoteContainer(data.starwars[num]);
         }
 
     })
+}
+
+const randomNumber = function(min, max) {
+    let nb = min + (max-min+1)*Math.random();
+    return Math.floor(nb);
 }
 
 const createQuoteContainer = function(quoteContent) {
