@@ -1,0 +1,162 @@
+{
+    "starwars" : [
+        {
+            "id": 0,
+            "content": "General Dodonna: May the Force be with you.",
+            "faction": 0
+        },
+        {
+            "id": 1,
+            "content": "Obi Wan Kenobi: These aren’t the droids you’re looking for.",
+            "faction": 0
+        },
+        {
+            "id": 2,
+            "content": "Han Solo: Great, kid. Don’t get cocky.", 
+            "faction": 0
+        },
+        {
+            "id": 3,
+            "content": "Princess Leia: Aren’t you a little short for a Stormtrooper?",
+            "faction": 0
+        },
+        {
+            "id": 4,
+            "content": "Yoda: Do, or do not. There is no try.",
+            "faction": 0
+        },
+        {
+            "id": 5,
+            "content": "Yoda: Train yourself to let go of everything you fear to lose.",
+            "faction": 0
+        },
+        {
+            "id": 6,
+            "content": "Obi-Wan Kenobi: Don’t give in to hate. That leads to the dark side.",
+            "faction": 0
+        },
+        {
+            "id": 7,
+            "content": "Han Solo: Listen, Big Deal. You got another problem. Women always figure out the truth. Always.",
+            "faction": 0
+        },
+        {
+            "id": 8,
+            "content": "Padmé Amidala: So this is how liberty dies. With thunderous applause.",
+            "faction": 0
+        },
+        {
+            "id": 9,
+            "content": "Ahsoka Tano: I like firsts. Good or bad, they’re always memorable.",
+            "faction": 0
+        },
+        {
+            "id": 10,
+            "content": "Obi-Wan Kenobi: If you strike me down, I shall become more powerful than you can possibly imagine.",
+            "faction": 0
+        },
+        {
+            "id": 11,
+            "content": "Darth Vader: The circle is now complete. When I left you, I was but the learner; now I am the master.",
+            "faction": 1
+        },
+        {
+            "id": 12,
+            "content": "Darth Vader: No, I am your father. Search your feelings. You know it to be true.",
+            "faction": 1
+        },
+        {
+            "id": 13,
+            "content": "Darth Vader: I find your lack of faith disturbing.",
+            "faction": 1
+        },
+        {
+            "id": 14,
+            "content": "Boba Fett: He’s no good to me dead.",
+            "faction": 1
+        },
+        {
+            "id": 15,
+            "content": "Darth Maul: At last we will reveal ourselves to the Jedi. At last we will have revenge.",
+            "faction": 1
+        },
+        {
+            "id": 16,
+            "content": "Darth Sidious: Execute Order 66.",
+            "faction": 1
+        },
+        {
+            "id": 17,
+            "content": "Darth Sidious: So Be It... Jedi. Now young Skywalker, you will die.",
+            "faction": 1
+        },
+        {
+            "id": 18,
+            "content": "Darth Sidious: Everything that has transpired has done so according to my design.",
+            "faction": 1
+        },
+        {
+            "id": 19,
+            "content": "Darth Sidious: Oh, No, My Young Jedi. You Will Find That It Is You Who Are Mistaken, About A Great Many Things.",
+            "faction": 1
+        },
+        {
+            "id": 20,
+            "content": "Darth Sidious: You, Like Your Father, Are Now...Mine!",
+            "faction": 1
+        },
+        {
+            "id": 21,
+            "content": "Rio Durant: I’m tellin ya, you will never have a deeper sleep than curled up in a Wookiee’s lap.",
+            "faction": 2
+        },
+        {
+            "id": 22,
+            "content": "The Mandalorian: I can bring you in warm, or I can bring you in cold.",
+            "faction": 2
+        },
+        {
+            "id": 23,
+            "content": "The Client: Bounty hunting is a complicated profession.",
+            "faction": 2
+        },
+        {
+            "id": 24,
+            "content": "Kuill: I will help you. I have spoken.",
+            "faction": 2
+        },
+        {
+            "id": 25,
+            "content": "The Mandalorian: I’m a Mandalorian. Weapons are part of my religion.",
+            "faction": 2
+        },
+        {
+            "id": 26,
+            "content": "The Armorer: When one chooses to walk the Way of the Mandalore, you are both hunter and prey.",
+            "faction": 2
+        },
+        {
+            "id": 27,
+            "content": "Greef Karga: Come on, baby! Do the magic hand thing.",
+            "faction": 2
+        },
+        {
+            "id": 28,
+            "content": "Cobb Vanth: I guess every once in a while both suns shine on a womp rat’s tail.",
+            "faction": 2
+        },
+        {
+            "id": 29,
+            "content": "Boba Fett: I don’t want your armor. I want my armor.",
+            "faction": 2
+        },
+        {
+            "id": 30,
+            "content": "The Mandalorian: No droids.",
+            "faction": 2
+        }
+
+    ]
+}
+
+

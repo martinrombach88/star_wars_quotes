@@ -4,14 +4,17 @@ document.getElementById('mainContainer').classList.add('loadingBackground');
 let quoteContainer = false;
 let getQuote = function() {
     let intro = document.getElementById('intro')
-    let num = randomNumber(0, 2);
-    fetch('api/starwars.json')
+    let num = randomNumber(0, 30);
+    fetch('json/starwars.json')
+    //Original API Code - Cannot guarantee a response
+    //fetch('https://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote') 
+    
     .then((response) => {
         return response.json();
     })
     .then((data) => {
-        console.log(data.starwars[num]);
-        console.log(data.starwars[num].content);
+        // console.log(data.starwars[num]);
+        // console.log(data.starwars[num].content);
         if(!quoteContainer) {
             document.getElementById('mainContainer').removeChild(intro);
             createQuoteContainer(data.starwars[num]);
@@ -30,17 +33,19 @@ const randomNumber = function(min, max) {
 }
 
 const createQuoteContainer = function(quoteContent) {
+
     //Quote Init
     let quoteInit = quoteContent['content'];
     let quotePost = document.createTextNode(quoteInit);
+
     //Create element
     let div = document.createElement('div');
     let p = document.createElement('p');
     let btnDiv = document.createElement('div');
     let btn = document.createElement('button');
     let twitterBtn = document.createElement('button');
-    //Create Text Node
     
+    //Create Text Node
     let btnText = document.createTextNode("New Quote");
     let twitterText = document.createTextNode("Post to Twitter");
 
@@ -65,7 +70,7 @@ const createQuoteContainer = function(quoteContent) {
     p.setAttribute('id', 'quoteP')
     p.appendChild(quotePost);
 
-
+    //Event listeners
     btn.addEventListener("click", function() {
         getQuote();
         })
@@ -113,39 +118,7 @@ const setContainerColor = function(faction) {
 
 const tweetQuote = function(quotePost) {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${quotePost.textContent}`; 
-    //Using a template string allows turning a variable into a string for reference
-    window.open(twitterUrl, '_blank') //Opens a twitter window in a new tab
+    window.open(twitterUrl, '_blank') 
 }
 
 getQuote();
-
-
-
-//Notes from Mentor:
-// Mistake! - Don't use single = for comparison.
-
-//Don't set styles by id. Use classes instead. Only use ids in rare occasions.
-
-//Make your code more DRY, think more top down and functionally.
-//Each function has to do one thing, and should do it generically.
-//Don't embed ids in code.
-
-//Completely separate the styles from HTML structure. 
-//Use classes for CSS only. Make sure functions serve a single purpose.
-//Order:
-//Build the structure of the HTML/Javascript functions.
-//Set the CSS through classes.
-
-//Key Note: Structure into lots of small functions that serve single purposes.
-
-//When adding buttons + loading
-//1. Build the HTML/DOM structure first. DO NOT USE CSS!
-//2. Add the on click event in a separate function.
-//3. Loading - one from an onclick event. 
-// One from the page load event. - This is more complicated. 
-// You would need to build extra code to add an animation while this is loading.
-// This is a complicated process and should be avoided. (Maybe just style the body instead.)
-//4
-
-//Marie Tip 
-//When making a transition, deal with the opacity.
